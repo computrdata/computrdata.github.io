@@ -4,10 +4,24 @@
 
 
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCFd4W4tFNc5JLlD_W4u9P5nDfI0TVZh3Y",
+      authDomain: "counter-5ef16.firebaseapp.com",
+      databaseURL: "https://counter-5ef16.firebaseio.com",
+      projectId: "counter-5ef16",
+      storageBucket: "counter-5ef16.appspot.com",
+      messagingSenderId: "468363367085"
+    };
+    firebase.initializeApp(config);
+  </script>
 
   <script src="https://unpkg.com/react@15.3.2/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
@@ -15,43 +29,59 @@
   <script src="https://npmcdn.com/react-router@3.0.2/umd/ReactRouter.min.js"></script>
   <style>
     body {
-      background-color: #FFCC00;
-      padding: 20px;
-      margin: 0;
+      // background-color: #F7F7FF;
+      // padding: 20px;
+      // margin: 0;
     }
     h1, h2, p, ul, li {
-      font-family: 'Roboto Condensed Light', sans-serif;
+      font-family: 'VT323', monospace;
+
     }
     ul.header li {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
+      // display: inline;
+      // list-style-type: none;
+      // margin: 0;
     }
     ul.header {
-      background-color: #111;
-      padding: 0;
+      // background-color: #111;
+      // padding: 0;
     }
     ul.header li a {
-      color: #FFF;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 20px;
-      display: inline-block;
+      // color: #FFF;
+      // font-weight: bold;
+      // text-decoration: none;
+      // padding: 20px;
+      // display: inline-block;
     }
     .content {
-      background-color: #FFF;
-      padding: 20px;
+      // background-color: #FFF;
+      // padding: 20px;
     }
     .content h2 {
-      padding: 0;
-      margin: 0;
+      // padding: 0;
+      // margin: 0;
     }
     .content li {
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
     }
     .active {
-      background-color: #0099FF;
+      // background-color: #0099FF;
     }
+    .nav {
+      background-color: #070600;
+      color: #F7F7FF;
+    }
+    #navtitle {
+      color: #F7F7FF;
+
+    }
+    .hero.is-primary {
+      background-color: #EA526F;
+    }
+    #doinwell {
+      color: #EA526F;
+    }
+
 
   </style>
 
@@ -64,6 +94,7 @@
 
   <script type="text/babel">
 
+
     // clean stuff up a lil
     var { Router,
           Route,
@@ -74,11 +105,44 @@
 
 
     var Home = React.createClass({
+
+      // componentDidMount: function() {
+      //     firebase.database().ref('count/').on('value', function(snapshot) {
+      //       this.setState({
+      //         count: snapshot.val()
+      //       });
+      //     });
+      // },
+      //
+      // addCounter: function() {
+      //   console.log(this.props);
+      //   firebase.database().ref('count/').transaction(function(currentCount) {
+      //     return currentCount + 1;
+      //   });
+      //
+      // },
       render: function() {
+
         return (
-          <div>
-            <h2>HELLO</h2>
-            <p> temporary mini react app (checkout the source!) </p>
+          <div className="container" >
+            <section className="hero is-fullheight">
+              <div className="hero-body">
+                <div className="container">
+                  <h1 className="title has-text-centered">
+                    hello
+                  </h1>
+                  <h2 className="subtitle has-text-centered">
+                    how ya doin
+                  </h2>
+                  {/* <div className="has-text-centered" >
+                    <a class="button has-text-centered" id="doinwell" onClick={this.addCounter()}>doin well</a>
+                    <p> people are doing well </p>
+                  </div> */}
+
+                </div>
+
+              </div>
+            </section>
           </div>
 
         );
@@ -100,29 +164,96 @@
     var Stuff = React.createClass({
       render: function() {
         return (
-          <div>
-            <h2> stuff </h2>
-            <p> some stuff goes here </p>
+
+
+          <div className="container">
+            <section className="hero is-primary is-medium">
+              <div className="hero-body">
+                <div className="container has-text-centered">
+                  <h1 className="title">
+                    My Projects
+                  </h1>
+                  <h2 className="subtitle">
+                    stuff i make
+                  </h2>
+                </div>
+              </div>
+          </section>
+
+
+            <div className="tile is-ancestor">
+              <div className="tile is-4 is-vertical is-parent">
+                <div className="tile is-child box">
+                  <p className="title">One</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                </div>
+                <div className="tile is-child box">
+                  <p className="title">Two</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                </div>
+              </div>
+              <div className="tile is-parent">
+                <div className="tile is-child box">
+                  <p className="title">Three</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+                  <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
+                  <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+                </div>
+              </div>
+            </div>
           </div>
         );
       }
     });
 
     var App = React.createClass({
+
       render: function() {
         return (
-          <div>
-            <h1>bretth18</h1>
-            <ul className="header">
-              <li><IndexLink to="/" activeClassName="active">home</IndexLink></li>
-              <li><Link to="/stuff" activeClassName="active">stuff</Link></li>
-              <li><Link to="/contact" activeClassName="active">contact</Link></li>
-            </ul>
-            <div className="content">
+          <div className="" >
+              <nav className="nav has-shadow">
+                <div className="container">
+                  <div className="nav-left">
+                    <h1 className="title" id="navtitle"> bretth18 </h1>
+                  </div>
+
+                  <span className="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </span>
+
+                  <div className="nav-right nav-menu">
+                        <a className="nav-item" id="navtitle"><IndexLink to="/" activeClassName="active" id="navtitle">home</IndexLink></a>
+                        <a className="nav-item" id="navtitle"><Link to="/stuff" activeClassName="active" id="navtitle">stuff</Link></a>
+                        <a className="nav-item" id="navtitle"><Link to="/contact" activeClassName="active" id="navtitle">contact</Link></a>
+                  </div>
+                </div>
+              </nav>
+
+            <div className="container">
               {this.props.children}
-
-
             </div>
+
+            <footer className="footer">
+              <div className="container">
+                <div className="content has-text-centered">
+                  <p>
+                    <a className="icon" href="https://github.com/bretth18">
+                      <i className="fa fa-github"></i>
+                    </a>
+                    <a className="icon" href="https://instagram.com/bretth18">
+                      <i className="fa fa-instagram"></i>
+                    </a>
+                    <a className="icon" href="https://twitter.com/brett_h18">
+                      <i className="fa fa-twitter"></i>
+                    </a>
+                  </p>
+                  <p> copyright 2017; Brett Henderson</p>
+                </div>
+              </div>
+            </footer>
+
           </div>
         )
       }
